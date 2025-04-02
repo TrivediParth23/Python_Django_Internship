@@ -1,0 +1,45 @@
+{% extends 'shop/basic.html' %}
+{% block title %}My orders Page{% endblock %}
+{% block body%}
+<div class="container">
+    <div class="col my-2">
+        <div class="variable" id='change my-3'>
+        </div>
+        <div>
+            <h3>It's just View page you can do further prosedure Checkout Option..</h3>
+        </div>
+        <div>
+            <ol class="list-group list-group-numbered" id="items">
+            </ol>
+        </div>	
+    </div>
+</div>
+{%endblock%}
+{% block js %}
+<script>
+if (localStorage.getItem('cart') == null) {
+    var cart = {};
+} else {
+    cart = JSON.parse(localStorage.getItem('cart'));
+}
+var sum = 0;
+var totalPrice = 0;
+if ($.isEmptyObject(cart)) {
+    mystr = `<div class="alert alert-danger my-1" role="alert"><h5 class="alert-heading">You haven't choosen any product to purchase..!!</h5></div>`
+    $('#items').append(mystr);
+} else {
+    for (item in cart) {
+        let name = cart[item][1];
+        let qty = cart[item][0];
+        let itemPrice = cart[item][2];
+
+        sum = sum + qty;
+        totalPrice = totalPrice + qty * itemPrice;
+        mystr = `<li class="list-group-item d-flex justify-content-between align-items-start bg-light rounded-pill my-1">${name}<span class="badge bg-warning rounded-pill">Quantity : ${qty}</span>
+      </li>`
+        $('#items').append(mystr);
+    }
+}
+$('#itemsJson').val(JSON.stringify(cart));
+</script>
+{% endblock %}

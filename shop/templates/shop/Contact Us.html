@@ -1,0 +1,64 @@
+{% extends 'shop/basic.html' %}
+{% block title %} Contact Us page{% endblock %}
+{% block body %}
+<div class="container">
+    <center><h2>Contact Us</h2></center>
+    <center><h5>We are here for you and your all doubts, feel free to ask...!!!</h5></center>
+    <form class="row g-3 my-2" action="../contact us/" method="post">{% csrf_token %}
+        <div class="col-md-6">
+            <label for="inputname" class="form-label my-1">Enter Name</label>
+            <input type="text" class="form-control" id="inputname" name="name" placeholder="Enter Name">
+        </div>
+        <div class="col-md-6">
+            <label for="inputEmail4" class="form-label my-1">Enter Email</label>
+            <input type="email" class="form-control" id="inputEmail4" name="email-id" placeholder="Enter Email">
+        </div>
+        <div class="col-12">
+            <label for="inputAddress" class="form-label my-1">Primary Address</label>
+            <input type="text" class="form-control" id="inputAddress" name="address1" placeholder="Enter Your Main Address Here...">
+        </div>
+        <div class="col-12">
+            <label for="inputAddress2" class="form-label my-1">Secondary Address</label>
+            <input type="text" class="form-control" id="inputAddress2" name="address2" placeholder="Enter Your Optional Address Here...">
+        </div>
+        <div class="col-md-6">
+            <label for="inputCity" class="form-label my-1">Enter City</label>
+            <input type="text" class="form-control" id="inputCity" name="city" placeholder="Enter City Name">
+        </div>
+        <div class="col-md-4 my-2">
+            <label for="inputState" class="form-label">State</label>
+            <select id="inputState" class="form-select my-3" name="state">
+                <option selected>Choose...</option>
+                <option>Gujrat</option>
+                <option>Rajasthan</option>
+                <option>Punjab</option>
+                <option>Maharastra</option>
+                <option>Other..</option>
+            </select>
+        </div>
+        <div class="col-12">
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label my-1">Any Query??!!</label>
+                <textarea name="query" class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Describe Your Query In Detail Here....!!!"></textarea>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox"  name="tick" id="gridCheck">
+                <label class="form-check-label" for="gridCheck">
+                    Accept all Terms and Conditions....
+                </label>
+            </div>
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary my-2">Submit</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+{% block js %}
+<script>
+{% if thank%}
+alert('Thank You For your feedback, we will work on it....')
+window.location.href = "/";
+{% endif %}
+</script>
+{% endblock %}

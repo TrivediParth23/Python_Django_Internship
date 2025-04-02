@@ -1,0 +1,1 @@
+Hi, welcome to static file, this will provide you all basics.
